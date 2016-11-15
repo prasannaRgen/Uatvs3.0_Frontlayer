@@ -1,9 +1,9 @@
 ﻿/* Copyright © 2012 RGen Solutions . All Rights Reserved.
    Contact : support@rgensolutions.com 
    Author: Shrutika Mendhe
-   Modified By: Ejaz Waquif (For XMLHTTPRequest)
+   Modified By: Ejaz Waquif (For XMLHTTPRequest) modified Atul 
    Modified: 30 Jan 2015
-   Created: 08/11/2013
+   Created: 08/11/2013 
 */
 $.ajaxSetup({
     // Disable caching of AJAX responses
