@@ -4153,11 +4153,11 @@ var DashBoard = {
     getDataFromService: function () {
 
         //call the service layer to get data
-        _spUserId='37'
+    
         var DataCollection;
         DashBoard.dataCollection = ServiceLayer.GetData("GetDashboardData",undefined, 'Dashboard');
         DataCollection = DashBoard.dataCollection;
-        if (DataCollection != undefined) {
+        if (DataCollection != undefined && DataCollection.length>0) {
             var len = DataCollection.length;
             for (var i = 0; i < len; i++) {
 
