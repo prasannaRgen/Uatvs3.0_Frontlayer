@@ -53,11 +53,11 @@ var ServiceLayer = {
                     var status = req.status
 
                     //To get the client name and client logo info
-                    if (methodName == "GetUserProjectsWithSecurity" || methodName.indexOf("GetTestCasesTestSteps") != -1) {
-                        ServiceLayer.getClientInfo(req.getAllResponseHeaders());
+                    //if (methodName == "GetUserProjectsWithSecurity" || methodName.indexOf("GetTestCasesTestSteps") != -1) {
+                    //    ServiceLayer.getClientInfo(req.getAllResponseHeaders());
 
-                        //Main.bannerLogo();
-                    }
+                    //    //Main.bannerLogo();
+                    //}
                 }
             }
 
