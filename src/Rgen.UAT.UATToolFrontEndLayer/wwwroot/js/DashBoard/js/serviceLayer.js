@@ -11,8 +11,8 @@ $.ajaxSetup({
 });
 var ServiceLayer = {
 
-    serviceURL: "http://localhost:59947/api",
-    appurl: "http://uatservicelayer-uatvs-servicelayer.cloudapps.click2cloud.org",
+    serviceURL: "http://uatservicelayer-uatvs-servicelayer.cloudapps.click2cloud.org/api",
+    appurl:  window.location.href.substr(0, window.location.href.lastIndexOf('/')),
     clientInfo: new Array(),
 
     GetData: function (methodName, parameter, ControllerName) {
