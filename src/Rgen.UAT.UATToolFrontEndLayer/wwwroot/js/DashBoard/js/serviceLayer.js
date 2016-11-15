@@ -89,7 +89,13 @@ var ServiceLayer = {
                     var resp = req.responseText;
 
                     if (resp != "" && resp != null)
-                        response = JSON.parse(resp);
+                        if (ControllerName=="CompanyReg") {
+                            response = resp;
+                        }
+                        else {
+                            response = JSON.parse(resp);
+                        }
+                        
 
                 }
 
