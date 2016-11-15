@@ -90,7 +90,7 @@ pageLoad:function()
 		
 	isRootWeb = true;
 	
-	Main.setBanner();
+	//Main.setBanner();
 	/* Added by shilpa for bug 7238 */
 	$("a").mousedown(function(){return false});
 	$("img").mousedown(function(){return false});
@@ -137,15 +137,15 @@ pageLoad:function()
 			
   }
  
-   var query = "<Query></Query>";
-   var listname = jP.Lists.setSPObject(Main.getSiteUrl(),'Portfolio');	
-   var result = listname.getSPItemsWithQuery(query).Items;
-   if(result!=null && result!=undefined)
-   {
-     if(result [0]["EnablePortfolio"] == "1")
-       isPortfolioOn = true;
-       gPortfolioID=result [0]["ID"];
-   }
+   //var query = "<Query></Query>";
+   //var listname = jP.Lists.setSPObject(Main.getSiteUrl(),'Portfolio');	
+   //var result = listname.getSPItemsWithQuery(query).Items;
+   //if(result!=null && result!=undefined)
+   //{
+   //  if(result [0]["EnablePortfolio"] == "1")
+   //    isPortfolioOn = true;
+   //    gPortfolioID=result [0]["ID"];
+   //}
      
      if(!isPortfolioOn) //if portfolio is disable
 	 {
