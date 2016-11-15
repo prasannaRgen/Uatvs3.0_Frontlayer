@@ -35,7 +35,7 @@ var _companydetails =
 
                
                 var _insert = ServiceLayer.InsertUpdateData('SaveCompanyDetails', values, 'CompanyReg');
-                if (_insert != '' && _insert.indexOf('Insert Successfully')) {
+                if (_insert == 'Insert Successfully..!!!') {
                     func.resetFormFeilds('form-horizontal');
                     var msg = "<br/>";
                     $("#autoHideAlert").html("Congragulations Company Create Successfully..!! <br/>  Please add more users for better UAT..!!");
