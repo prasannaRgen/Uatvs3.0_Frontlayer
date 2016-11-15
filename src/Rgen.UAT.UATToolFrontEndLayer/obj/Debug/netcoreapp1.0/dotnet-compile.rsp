@@ -1,5 +1,5 @@
---temp-output:D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\obj\Debug\netcoreapp1.0\
---out:D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\bin\Debug\netcoreapp1.0\Rgen.UAT.UATToolFrontEndLayer.dll
+--temp-output:C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\obj\Debug\netcoreapp1.0\
+--out:C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\bin\Debug\netcoreapp1.0\Rgen.UAT.UATToolFrontEndLayer.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -208,21 +208,21 @@
 --reference:C:\Users\atul.sirsode\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\atul.sirsode\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\atul.sirsode\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\obj\Debug\netcoreapp1.0\Rgen.UAT.UATToolFrontEndLayerdotnet-compile.deps.json",Rgen.UAT.UATToolFrontEndLayer.deps.json
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Program.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Startup.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\AttachmentController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\CompanyLoginController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\ConfigurationController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\DashBoardController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\FeedbackController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\HomeController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\LoginController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\ReportController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\StakeholderDashboardController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestCaseController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TesterController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestPassController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestStepController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TriageController.cs
-D:\UAT3.0 TFS\UAT\UATv3.0\FrontEnd\Rgen.UAT.UATToolFrontEndLayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\UserRegistrationController.cs
+--resource:"C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\obj\Debug\netcoreapp1.0\Rgen.UAT.UATToolFrontEndLayerdotnet-compile.deps.json",Rgen.UAT.UATToolFrontEndLayer.deps.json
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Program.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Startup.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\AttachmentController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\CompanyLoginController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\ConfigurationController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\DashBoardController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\FeedbackController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\HomeController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\LoginController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\ReportController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\StakeholderDashboardController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestCaseController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TesterController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestPassController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TestStepController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\TriageController.cs
+C:\Users\atul.sirsode\Source\Repos\Uatvs3.0_Frontlayer\src\Rgen.UAT.UATToolFrontEndLayer\Controllers\UserRegistrationController.cs

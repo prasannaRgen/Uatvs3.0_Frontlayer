@@ -8,11 +8,19 @@ function transformArr(orig) {
     try {
         for (i = 0, j = orig.length; i < j; i++) {
             cur = orig[i];
-            if (!(cur.Project_Id in types)) {
-                types[cur.Project_Id] = { projectID: cur.Project_Id, listSecurityID: [] };
-                newArr.push(types[cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString()]);
+            if (cur.Security_Id == "1" && cur.Project_Id==null) {
+                var listSecurityID= [];listSecurityID.push(cur.Security_Id); 
+                newArr.push(cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString(), listSecurityID);
             }
-            types[cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString()].listSecurityID.push(cur.Security_Id == "" || cur.Security_Id == null ? "" : cur.Security_Id.toString());
+            else {
+                if (!(cur.Project_Id in types)) {
+                    types[cur.Project_Id] = { projectID: cur.Project_Id, listSecurityID: [] };
+                    newArr.push(types[cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString()]);
+                }
+                types[cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString()].listSecurityID.push(cur.Security_Id == "" || cur.Security_Id == null ? "" : cur.Security_Id.toString());
+            }
+
+           
         }
     } catch (e) {
         return;
