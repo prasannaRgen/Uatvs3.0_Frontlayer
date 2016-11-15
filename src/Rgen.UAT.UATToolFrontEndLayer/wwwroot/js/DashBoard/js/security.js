@@ -8,8 +8,8 @@ function transformArr(orig) {
     try {
         for (i = 0, j = orig.length; i < j; i++) {
             cur = orig[i];
-            if (cur.Security_Id == "1" && cur.Project_Id==null) {
-                var listSecurityID= [];listSecurityID.push(cur.Security_Id); 
+            if (cur.Security_Id == "1" && cur.Project_Id == null) {
+                var listSecurityID = []; listSecurityID.push({ 'listSecurityID': cur.Security_Id });
                 newArr.push(cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString(), listSecurityID);
             }
             else {
@@ -20,7 +20,7 @@ function transformArr(orig) {
                 types[cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString()].listSecurityID.push(cur.Security_Id == "" || cur.Security_Id == null ? "" : cur.Security_Id.toString());
             }
 
-           
+
         }
     } catch (e) {
         return;
@@ -45,7 +45,7 @@ var security = {
         security.globalSPUserID = SPUserID;
 
         /*** UAT Version 2.0**/
-        var msg = ServiceLayer.GetData("GetUserProjectsWithSecurity",undefined,  'Dashboard');
+        var msg = ServiceLayer.GetData("GetUserProjectsWithSecurity", undefined, 'Dashboard');
         Arrr = transformArr(msg);
 
 
