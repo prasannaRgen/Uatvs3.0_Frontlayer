@@ -380,7 +380,7 @@ var teststepfortester = {
                 //var attList = jP.Lists.setSPObject(teststepfortester.SiteURL,'Attachment');
                 // var query = '<Query><Where><And><Eq><FieldRef Name="ChildID" /><Value Type="Text">'+pageState[12]+'</Value></Eq><Eq><FieldRef Name="ResultType" /><Value Type="Text">Actual</Value></Eq></And></Where><ViewFields><FieldRef Name="ID"/><FieldRef Name="ResultType"/></ViewFields></Query>'
                 var AttachmentResult = ServiceLayer.GetData('GetAttachmentAfterUpload', pageState[12], 'TestingPg'); //attList.getSPItemsWithQuery(query).Items;
-                if (AttachmentResult != null && AttachmentResult != undefined) {
+                if (AttachmentResult != null && AttachmentResult != undefined && AttachmentResult.length > 0) {
                     if (AttachmentResult[AttachmentResult.length - 1]['ActualResult'] != undefined)
                         pageState[8] = AttachmentResult[AttachmentResult.length - 1]['ActualResult'];
                     else
