@@ -2362,7 +2362,7 @@ var tester = {
 					          //  window.location.href = Main.getSiteUrl() + '/SitePages/ProjectMgnt_1.aspx';
 					        else if (tester.noTPFlag == 1)
 					         //   window.location.href = Main.getSiteUrl() + '/SitePages/TestPassMgnt_1.aspx' + '?pid=' + show.projectId + '&tpid=' + show.testPassId;
-					            window.location.pathname = 'TestPass' 
+					            window.location.pathname = 'TestPass'
 					        $(this).dialog("close");
 					    },
 					    "Cancel": function () {
