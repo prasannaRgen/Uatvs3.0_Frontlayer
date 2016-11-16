@@ -7,6 +7,7 @@ Description: Custom logic for Global validations functions
 */
 
 
+
 var func =
     {
         IE_keydown: function () {
