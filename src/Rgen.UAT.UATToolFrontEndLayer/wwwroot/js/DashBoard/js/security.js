@@ -12,7 +12,7 @@ function transformArr(orig) {
                 var listSecurityID = []
                 listSecurityID.push(cur.Security_Id);
                 var list = { 'projectID': cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString(), 'listSecurityID': listSecurityID};
-                newArr.push(listSecurityID);
+                newArr.push(list);
             }
             else {
                 if (!(cur.Project_Id in types)) {
