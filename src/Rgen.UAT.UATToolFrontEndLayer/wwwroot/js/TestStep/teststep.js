@@ -495,10 +495,11 @@ showTestStep:function(sel)
 						var table='';
 						var completeTestCaseName = teststep.TestCaseNameArrForTCID[ data[i].testCaseId ];
 																												
-						if( data[i].erAttachmentURL != "" )
-							var attachimg = '<img title="View Attachment Details" src="/images/icon-attachment.png" alt="Attachment"></img>';
+						if (data[i].erAttachmentName == null || data[i].erAttachmentName == "")
+                            				var attachimg = '&nbsp';	
 						else
-							var attachimg = '&nbsp';	
+							var attachimg = '<img title="View Attachment Details" src="/images/icon-attachment.png" alt="Attachment"></img>';
+							
 																		
 						expResult = ( data[i].expectedResult == undefined || data[i].expectedResult == "" ) ? '-' : data[i].expectedResult;
 						
