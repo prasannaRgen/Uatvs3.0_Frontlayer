@@ -66,7 +66,7 @@ var AutoCompleteTextbox =
             window.open(url, "_blank");
         },
         _testingPgattchmentdownload: function (param) {
-            var url = ServiceLayer.serviceURL + '/TestingPg' + '/' + param + '&' + ServiceLayer.appurl;
+            var url = ServiceLayer.serviceURL + '/TestingPg/GetAttachmentFile' + '/' + param + '&' + ServiceLayer.appurl;
             window.open(url, "_blank");
 
         },
