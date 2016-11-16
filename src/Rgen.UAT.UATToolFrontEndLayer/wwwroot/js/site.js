@@ -68,7 +68,7 @@ var AutoCompleteTextbox =
         _testingPgattchmentdownload: function (param) {
             var url = ServiceLayer.serviceURL + '/TestingPg/GetAttachmentFile' + '?id=' + param + '&_Appurl=' + ServiceLayer.appurl;
             window.open(url, "_blank");
-                    },
+                                },
         _testpassAttachmentForEmail: function (_attdId) {
             var url = ServiceLayer.serviceURL + '/TestPass/GetAttachmentFile?id=' + _attdId + '&appurl=' + ServiceLayer.appurl;
             var req = new XMLHttpRequest();
