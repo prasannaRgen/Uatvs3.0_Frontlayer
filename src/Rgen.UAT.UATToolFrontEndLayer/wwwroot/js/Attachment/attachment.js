@@ -375,7 +375,7 @@ var attachment = {
                         'fileUrl': fileUrl,
                         'testStepId': strTestStepComma,
                         'fileType': 'Expected',
-                        'StatementType':'Insert',
+                        'StatementType': 'Insert',
                         'isDelete': 'false'
                     };
                     var result = ServiceLayer.InsertUpdateData("InsertUpdateAttachment", insertAttachDetails);
@@ -627,7 +627,7 @@ var attachment = {
 
                     var result = ServiceLayer.InsertUpdateData("senddata", data, "Attachment");
                     var attId = result;
-                   // var attId = result['ErrorDetails'].toString();//issue
+                    // var attId = result['ErrorDetails'].toString();//issue
                     /**/
 
                     /****** Code for saving file in db*******/
@@ -638,18 +638,19 @@ var attachment = {
 
                     $.ajax({
                         type: 'post',
-                        url: 'http://localhost:59947/api/Attachment/UploadFile',
+                        beforeSend: function (request) {
+                            request.setRequestHeader("appurl", ServiceLayer.appurl);
+                            request.setRequestHeader("LoggedInUserSPUserId", _spUserId);
+                        },
+                        url: ServiceLayer.serviceURL + '/Attachment/UploadFile',//Async
                         data: formData,
                         success: function (status) {
                             if (status != 'error') {
-                                var my_path = "MediaUploader/" + status;
-                                $("#myUploadedImg").attr("src", my_path);
                             }
                         },
                         processData: false,
                         contentType: false,
                         error: function () {
-                            alert("Whoops something went wrong!");
                         }
                     });
                     ////////////////*////////////////////
@@ -1594,7 +1595,7 @@ var attachment = {
     editAttachment: function (fileIndex, fileUrl, testStepIds, testStepPlanId, fileType, description, attachID, attName) {
 
 
-        
+
 
         //attachID = fileUrl.split("Attachments/")[1].split("/")[0];
         // Added for DD
@@ -1681,8 +1682,8 @@ var attachment = {
         //downloadfile by trupti
 
         var getPath = ServiceLayer.getFileAtta(attachID.toString());
-        if(getPath.indexOf('image')!= -1)
-        $("#preview img").attr('src', getPath);
+        if (getPath.indexOf('image') != -1)
+            $("#preview img").attr('src', getPath);
         else
             $("#preview img").attr('src', '../images/preview-cat.png');
         $("#preview img").css('width', '100%');
@@ -1774,9 +1775,9 @@ var attachment = {
 
         if (filepath != undefined && filepath != '') {
 
-            $("#attDownload").click(function () {                
+            $("#attDownload").click(function () {
                 var getPath = ServiceLayer.downloadFromAttachmentPg(filepath.toString());
-               // $("#preview img").attr('src', getPath);              
+                // $("#preview img").attr('src', getPath);              
             });
 
             $("#attDownload").show();
