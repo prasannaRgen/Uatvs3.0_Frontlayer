@@ -4169,7 +4169,7 @@ var DashBoard = {
                         DataCollection[i].projectLeadSPUserId = $(DataCollection[i].projectLead).find("spUserId").text();
                     }
                     if (DataCollection[i].hasOwnProperty("testManagerDetails")) {
-                        DataCollection[i].testManagerAlias = $(DataCollection[i].testManagerDetails).find("userAlias").text();
+                        DataCollection[i].testManagerAlias = $(DataCollection[i].testManagerDetails).find("userName").text();
                         DataCollection[i].testManagerEmail = $(DataCollection[i].testManagerDetails).find("userEmail").text();
                         DataCollection[i].testManagerSPUserId = $(DataCollection[i].testManagerDetails).find("spUserId").text();
                     }
