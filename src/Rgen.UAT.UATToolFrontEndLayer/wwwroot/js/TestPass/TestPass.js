@@ -1,4 +1,4 @@
-﻿var testpass = {
+var testpass = {
     SiteURL: Main.getSiteUrl(),
     startIndex: 0,
     oldTestMngrMailId: "",
@@ -174,7 +174,9 @@
         $("#dialog-form").dialog({
             autoOpen: false, height: 200, width: 300, modal: true, resizable: false,
             buttons: {
+
                 "OK": function () {
+
                     //Code Modified By swapnil on 17-7-2012 to resolve bug:677
                     if ($("div[title='Test Manager']").text() != '') {
                         var str = $("textarea[Title='Test Manager']").val();
@@ -1341,13 +1343,16 @@
 				{
 				    "Ok": function () {
 				        if (testpass.noPrjFlag == 1) {
-				            window.location.href = Main.getSiteUrl() + '/SitePages/ProjectMgnt_1.aspx';
+				            window.location.pathname = 'Dashboard/ProjectMgnt';
+				            //  window.location.href = Main.getSiteUrl() + '/SitePages/ProjectMgnt_1.aspx';
 				        }
 				        else if (testpass.notesterFlag == 1) {
-				            window.location.href = Main.getSiteUrl() + '/SitePages/Tester_1.aspx?pid=' + show.projectId + "&tpid=" + show.testPassId;
+				            window.location.pathname = 'Tester';
+				            // window.location.href = Main.getSiteUrl() + '/SitePages/Tester_1.aspx?pid=' + show.projectId + "&tpid=" + show.testPassId;
 				        }
 				        else if (testpass.noTCTSFlag == 1) {
-				            window.location.href = Main.getSiteUrl() + '/SitePages/testcase_1.aspx?pid=' + show.projectId + '&tpid=' + show.testPassId;
+				            window.location.pathname = 'TestCase';
+				            // window.location.href = Main.getSiteUrl() + '/SitePages/testcase_1.aspx?pid=' + show.projectId + '&tpid=' + show.testPassId;
 				        }
 				        $(this).dialog("close");
 				    },
@@ -1359,7 +1364,7 @@
 				}
         });
     },
-    /*For sending the email functionality added by Mohini DT:30-07-2014*/
+    /*For sending the email functionality */
     testerEmailIds: '',
     arrofTester: new Array(),
     arrofTesterIDs: new Array(),
@@ -1590,7 +1595,7 @@
                                 objDueDate.setSeconds("59");
                                 var currentDate = new Date();
 
-                                /*To calculate the days remaining :Ejaz Waquif DT 12/19/2013*/
+
                                 var NoOfDays = 0;
                                 var ddSplit = $(".rowSelected td").eq(4).text().split('/');
                                 var StartDate = $(".rowSelected td").eq(3).text().split('/');
@@ -1744,9 +1749,9 @@
 
                             //#Rupal var Source = substring + "/" + imageURL;
                             //testpass.mailItem.Attachments.Add(Source);
-                            
+
                             var imageBytes = AutoCompleteTextbox._testpassAttachmentForEmail(_attdId);
-                            
+
                             var image = new Image();
                             image.src = "data:image/png;base64," + (imageBytes);
                             var w = window.open("");
@@ -1839,7 +1844,6 @@
                         position: [500, 300],
                         open: function () {
                             $(".ui-dialog-titlebar-close").show();
-                            /*added by mohini for to made the pop up hidden division DT:12-06-2014*/
                             jQuery('.ui-widget-overlay').bind('click', function () {
                                 jQuery('#activeX-form').dialog('close');
                             })
@@ -1967,8 +1971,7 @@
 
 
             total = countPass + countFail + countNC;
-
-            //code updated on 14 March by sheetal to validate total value not exceed 100 and are not less than 100
+            //code updated to validate total value not exceed 100 and are not less than 100
             var flagPassRounded = false;
             var flagFailRounded = false;
             var flagNCRounded = false;
