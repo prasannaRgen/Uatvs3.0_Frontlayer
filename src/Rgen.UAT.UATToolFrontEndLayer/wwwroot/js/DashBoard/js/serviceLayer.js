@@ -9,10 +9,13 @@ $.ajaxSetup({
     // Disable caching of AJAX responses
     cache: false
 });
+var r = window.location.href.split('/');
+var FrontEndUrl = r[0] + "//" + r[2];
 var ServiceLayer = {
 
     serviceURL: "http://uatservicelayer-uatvs-servicelayer.cloudapps.click2cloud.org/api",
-    appurl:  window.location.href.substr(0, window.location.href.lastIndexOf('/')),
+
+    appurl: FrontEndUrl,
     clientInfo: new Array(),
 
     GetData: function (methodName, parameter, ControllerName) {
