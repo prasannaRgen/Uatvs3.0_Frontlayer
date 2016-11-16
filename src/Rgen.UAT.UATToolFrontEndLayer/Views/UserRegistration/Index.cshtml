@@ -1,4 +1,4 @@
-﻿@*/*⋆⋆⋆⋆⋆⋆⋆created By Rupal Shirpurkar ⋆⋆⋆⋆⋆⋆⋆ */*@
+@*/*⋆⋆⋆⋆⋆⋆⋆created By Rupal Shirpurkar ⋆⋆⋆⋆⋆⋆⋆ */*@
 @{
     Layout = "~/Views/Shared/_loginMaster.cshtml";
 }
@@ -72,20 +72,20 @@
     </style>
     <div class="container">
         <div class="form-horizontal " role="form">
-          
+
             <div class="form-group">
                 <label for="First Name" class="col-md-2 control-label m">First Name<span class="red">*</span></label>
                 <div class="col-md-3">
-                    <input type="text" class="form-control mandatory " id="FirstName" placeholder="Enter First Name">
+                    <input type="text" class="form-control mandatory "  onkeypress="return func.chkAlphabet(event, this);" id="FirstName" placeholder="Enter First Name">
                 </div>
                 <span class="msgSpan"></span>
             </div>
-            
+
 
             <div class="form-group">
                 <label for="LastName" class="col-md-2 control-label m">Last Name<span class="red">*</span></label>
                 <div class="col-md-3">
-                    <input type="text" class="form-control mandatory" id="LastName" placeholder="Enter Last Name">
+                    <input type="text" class="form-control mandatory" onkeypress="return func.chkAlphabet(event, this);" id="LastName" placeholder="Enter Last Name">
                 </div>
                 <span class="msgSpan"></span>
             </div>
@@ -98,6 +98,7 @@
                 </div>
                 <span class="msgSpan"></span>
             </div>
+
 
             <div class="form-group">
                 <label for="Password" class="col-md-2 control-label m">Password<span class="red">*</span></label>
@@ -117,25 +118,47 @@
             </div>
 
 
+
             <script type="text/javascript">
-        $(document).ready(function () {
-            
-            $("#DOB").datepicker({
-                changeMonth: true,
-                 changeYear: true
-
-            }
-            );
-
-            var x = setInterval(function () {
-               
-                if ($('.ui-datepicker-month').length > 0) {
-                    $('.ui-datepicker-month').css('width', '40% !important');
-                    clearInterval(x);
-                }
-            },100)
+    $(function () {
+        $("#btnSave").click(function () {
+            var password = $("#Password").val();
+            var confirmPassword = $("#ConfirmPassword").val(); 
+            if (password != null && confirmPassword != null && password != "" && confirmPassword != "")
+            {
+                if (password != confirmPassword)  {
+                    func.alertBox("Passwords do not match.");
+                    return false;
+                }}
+           return true;
         });
-       
+    });
+            </script>
+
+
+
+
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    $("#DOB").datepicker({
+                        changeMonth: true,
+                        changeYear: true
+
+                    }
+                    );
+
+                    var x = setInterval(function () {
+
+                        if ($('.ui-datepicker-month').length > 0) {
+                            $('.ui-datepicker-month').css('width', '40% !important');
+                            clearInterval(x);
+                        }
+                    }, 100)
+                });
+
 
             </script>
 
@@ -153,22 +176,20 @@
             </div>
 
 
-  
-
-
 
             <div class="form-group">
                 <label for="Gender" class="col-md-2 control-label ">Gender:</label>
                 <div class="col-lg-3">
-                    <div style="margin-right: 20px; float: left;">
-                        Male <input checked="checked" id="Gender" name="Gender" type="radio" value="Male" />
+                    <div id="Gender" style="margin-right: 20px; float: left;">
+                        <input checked="checked" type="radio" name="opGender" value="Male" /> Male <br />
                     </div>
                     <div>
-                        Female <input id="Gender" name="Gender" type="radio" value="Female" />
+                        <input type="radio" name="opGender" value="Female" /> Female <br />
                     </div>
-
                 </div>
             </div>
+        
+           
 
             <div class="form-group">
                 <label for="MobileNo" class="col-md-2 control-label">Mobile No</label>
