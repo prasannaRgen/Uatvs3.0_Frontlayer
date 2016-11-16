@@ -19,27 +19,28 @@
     <link href="~/js/DashBoard/css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
     <link href="~/js/DashBoard/css/rte.css" rel="stylesheet" type="text/css" />
     <link href="~/css/Custom.css" rel="stylesheet" />
-    
+    <link href="~/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
 
     <script type="text/javascript" src="https://static.sharepointonline.com/bld/_layouts/15/16.0.5729.1207/1033/initstrings.js"></script>
 
     <script type="text/javascript" src="~/js/DashBoard/js/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="~/js/DashBoard/js/jquery-ui-1.8.11.custom.min.js"></script>
 
-    
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
 
     <script src="~/js/DashBoard/js/init.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/Resource.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/resource.js"></script>
     <script type="text/javascript" src="~/js/DashBoard/js/security.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/jPoint.min.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/jquery.SPServices-0.6.1-min.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/jpoint.min.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/jquery.spservices-0.6.1-min.js"></script>
     <script type="text/javascript" src="~/js/DashBoard/js/main.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/AddUsers.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/jquery.betterTooltip.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/jquery.blockUI.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/Formatting.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/addusers.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/jquery.bettertooltip.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/jquery.blockui.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/formatting.js"></script>
     <script type="text/javascript" src="~/js/DashBoard/js/jquery.pagination.js"></script>
-    <script type="text/javascript" src="~/js/DashBoard/js/serviceLayer.js"></script>
+    <script type="text/javascript" src="~/js/DashBoard/js/servicelayer.js"></script>
     <script src="~/js/Utility.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/js/DashBoard/js/msajaxbundle.js"></script>
@@ -104,7 +105,7 @@
     <script type="text/javascript" src="~/js/DashBoard/js/html2xhtml.min.js"></script>
 
 
-   
+
 
     <script type="text/javascript">
         themeColor = "blue";
@@ -121,7 +122,7 @@
         gPortfolioID = '';
 
         $(document).ready(function () {
-         
+
             if (!func._checkIfUserLoginorNot()) {
                 func.redirect('Login');
                 return false;
@@ -131,7 +132,7 @@
                 // _spUserId = '19';
                 Main.pageLoad();
                 /*show login user in ribbon*/
-                  // UserInfo.showUserName();
+                   UserInfo.showUserName();
 
 
                 var Urls = CheckUrl();
@@ -147,17 +148,8 @@
                     });
                 }
             }
-           
-            //trupti//username conatainer
-          
-            $(".userNameDiv").mouseenter(function () {
-                $(".logOutDiv").show();
-            });
 
-            $(".userNameDiv").mouseleave(function () {
-                $(".logOutDiv").hide();
-            });
-            //trupti
+
         });
 
         /*Added for Yammer and Lync integration*/
@@ -186,24 +178,49 @@
 
     <style type="text/css">
         /***********************trupti : log in user in ribbon*/
-            .userNameDiv {
-                position: relative;
-                color: #0F0;
-                font-weight: bold;
-   
-            }
+        .userNameDiv {
+            position: relative;
+            color: #0F0;
+            font-weight: bold;
+            /*extra*/
+            margin-bottom: 10px;
+            padding-left: 20px;
+            white-space: nowrap;
+            display: inline-block; /*important*/
+            height: 30px;
+            line-height: 30px;
+        }
 
-            .logOutDiv {
-                position: absolute;
-                top: 20px;
-                left: 0px;/*20px;*/
-                border: 1px solid black;
-                padding: 5px;
-                z-index: 100;  /* Thanks Diego for pointing out the typo here */
-                background-color: white;
-                display: none;
-            }
-      
+        .userWDiv:hover {
+            background-color: #e7e8ff;
+            border-right: 1px solid #ccc;
+        }
+
+        .logOutDiv:hover {
+            background-color: #e7e8ff;
+        }
+
+        .userWDiv {
+            padding: 10px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .logOutDiv {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            z-index: 100; /* Thanks Diego for pointing out the typo here */
+            background-color: white;
+            display: none;
+            /*extra*/
+            padding: 5px 10px 0px 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
         /**********trupti***********/
         .tTip {
             padding-left: 16px !important;
@@ -319,7 +336,7 @@
 
                 </a>
             </div>
-            <table style="width:100%">
+            <table style="width:100%" class="ribbonTbl">
                 <tr style="height: 43px;">
                     <td style="width: 80%; padding-left: 8px;">
                         <div class="nav">
@@ -355,26 +372,18 @@
                         </div>
                     </td>
                     <td align="left">
-                             <div class="infoDiv">
-                            @*<div id="userW" class="userNameDiv">
-                                <div class="logOutDiv">Log Out</div>
-                            </div>*@
-                                
-                            @*<div class="logOutDiv"><a asp-area="" asp-controller="Login" asp-action="Index">
-                                Log Out</a></div>*@
-                        </div>
-                        @*<div class="userNameDiv">
-                            <div id="userW"></div>
-                            <div class="logOutDiv">
-                                <a asp-area="" asp-controller="Login" asp-action="Index">
+                        <span class="userNameDiv">
+                            <span id="userW" class="userWDiv"></span>
+                            <span class="logOutDiv">
+                                <a asp-area="" style="color:black" asp-controller="Login" asp-action="Index">
                                     Log Out
                                 </a>
-                            </div>
-                        </div>*@
+                            </span>
+                        </span>
                     </td>
                 </tr>
             </table>
-        
+
             <div class="col-full">
                 <div>
                     @RenderBody()
