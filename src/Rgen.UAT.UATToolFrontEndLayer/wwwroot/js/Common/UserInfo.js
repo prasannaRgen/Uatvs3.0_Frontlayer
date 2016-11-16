@@ -7,7 +7,7 @@
 
         var showUser = ServiceLayer.GetData("GetUserInfo" + "/" + spUserid, null, "UserInfo");
 
-        if (showUser != undefined) {
+        if (showUser != undefined && showUser.length > 0) {
             loginUserName = showUser[0].firstName;
             $('#userW').html('<span>' + loginUserName + '<img style="padding-left:15px;" src="../images/drop-arrow.gif" /></span>');
             var outerDivWidth = $('.userWDiv').width() + "px";
