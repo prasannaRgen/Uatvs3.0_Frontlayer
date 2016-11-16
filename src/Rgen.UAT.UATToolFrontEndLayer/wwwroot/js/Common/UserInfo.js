@@ -16,6 +16,10 @@
         }
 
 
+        $('a[id*=Logout]').click(function () {
+            func.removeSession();
+        });
+
         $(".userNameDiv").click(function () {
             $(".logOutDiv").show();
 
