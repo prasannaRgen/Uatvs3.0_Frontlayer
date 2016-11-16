@@ -3257,9 +3257,9 @@ var DashBoard = {
         msg += "•If you change the format of the template, data will not be imported properly.<br/>"
 
         if (isRootWeb)
-            var url = "<a href='../SiteAssets/GuidelineDocs/Dashboard My Activity - Offline Testing - Template uploading guidelines.pdf' target='_blank' style='text-decoration:underline;color:blue'>File</a>";
+            var url = "<a href='../GuidelineDocs/Dashboard My Activity - Offline Testing - Template uploading guidelines.pdf' target='_blank' style='text-decoration:underline;color:blue'>File</a>";
         else
-            var url = "<a href='../../SiteAssets/GuidelineDocs/Dashboard My Activity - Offline Testing - Template uploading guidelines.pdf' target='_blank' style='text-decoration:underline;color:blue'>File</a>";
+            var url = "<a href='../../GuidelineDocs/Dashboard My Activity - Offline Testing - Template uploading guidelines.pdf' target='_blank' style='text-decoration:underline;color:blue'>File</a>";
         var msg = "Please follow below steps to Import Testing Template:<br/>";
         msg += "&nbsp;&nbsp;1.	Download a Template with 'Export " + DashBoard.gConfigTestCase + "s' option from 'Offline Testing' column for selected " + DashBoard.gConfigProject + " and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected " + DashBoard.gConfigTestPass + " (Select only 1 " + DashBoard.gConfigTestPass + " at a time).<br/>";
         msg += "&nbsp;&nbsp;2.	You will get a " + DashBoard.gConfigTestCase + " template as per the selected " + DashBoard.gConfigRole + ". (1 template for 1 Testing " + DashBoard.gConfigRole + ".)<br/>";

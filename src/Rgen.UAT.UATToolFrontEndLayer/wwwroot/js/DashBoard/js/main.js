@@ -325,7 +325,7 @@ showLoading:function()
     /* modified by shilpa on 2/4/2013 */
     if ($.blockUI!=undefined) {
         $.blockUI({
-            //message: '<img src="../../SiteAssets/NewDesign/images/ajax-loader.gif" alt="Loading..." />',
+            //message: '<img src="../../NewDesign/images/ajax-loader.gif" alt="Loading..." />',
             message: '<div style="font-size:12pt;font-weight:400;color:white;"> Please wait.... </div>',
             fadeIn: 0,
             css: {
@@ -491,14 +491,14 @@ setBanner:function()
 	var pageName = url.substring(a+1, b).toLowerCase();
 	
 	//Mangesh: comment the below line for right side logo changes
-	//$(".logo").empty().html('<img src="../SiteAssets/images/Logo.jpg" alt="logo" style="width:110px;height:80px;padding-left:8px;padding-bottom: 6px;"/>');
+	//$(".logo").empty().html('<img src="../images/Logo.jpg" alt="logo" style="width:110px;height:80px;padding-left:8px;padding-bottom: 6px;"/>');
 	//$(".logo").empty().html('<img src="~/images/Logo.png" alt="logo" style="padding-left:8px;padding-bottom: 6px;margin-top:25px"/>');
 	
 	if(isRootWeb)
 	{
 		switch(pageName)
 		{
-			case "dashboard":$(".adv").html('<img style="width:1024px" alt="Customized banner goes here" src="../SiteAssets/theme/'+themeColor+'/images/banner-dashboard.jpg" complete="complete"/>');
+			case "dashboard":$(".adv").html('<img style="width:1024px" alt="Customized banner goes here" src="../theme/'+themeColor+'/images/banner-dashboard.jpg" complete="complete"/>');
 							 break;
 			case "dashboard-stakeholder":$(".adv").html('<img style="width:1024px" alt="Customized banner goes here" src="../SiteAssets/theme/'+themeColor+'/images/banner-dashboard.jpg" complete="complete"/>');
 							 break;
