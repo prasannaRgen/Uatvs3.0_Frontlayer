@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/UatMaster.cshtml";
 
 }
@@ -47,9 +47,7 @@
             padding: 15px 0px 0px 20px;
         }
 
-        /*.ms-imnlink {
-            padding: 0px 0px 0px 0px !important;
-        }*/
+       
 
         ms-imnSpan1 {
             position: relative;
@@ -83,12 +81,12 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            // isPortfolioOn = false;
-            /* Added by Shilpa For Dynamic Theme Conversion */
+            /* // isPortfolioOn = false;
+             Added by Shilpa For Dynamic Theme Conversion */
             if (isRootWeb) {
                 var src = "/css/theme/" + themeColor + "/Report/images/showSubRept.jpg";
 
-                // var src = "~/css/theme/blue/Report/images/showSubRept.jpg";
+           
                 var src1 = "/css/theme/" + themeColor + "/Report/images/hideSubRept.jpg"
                 var src2 = "/css/theme/" + themeColor + "/Report/images/leg-pass.jpg";
                 var src3 = "/css/theme/" + themeColor + "/Report/images/leg-fail.jpg";
@@ -109,7 +107,7 @@
             }
             else {
                 var src = "/css/theme/" + themeColor + "/Report/images/showSubRept.jpg";
-                //  var src = "/css/theme/" + themeColor + "/Report/images/showSubRept.jpg";
+               
                 var src1 = "/css/theme/" + themeColor + "/Report/images/hideSubRept.jpg"
                 var src2 = "/css/theme/" + themeColor + "/Report/images/leg-pass.jpg";
                 var src3 = "/css/theme/" + themeColor + "/Report/images/leg-fail.jpg";
@@ -143,10 +141,10 @@
 
             $('.imgProgress').attr('src', src5);
 
-            //Code for Portfolio Feature:Mohini Date:04-03-2014
+            /*Code for Portfolio Feature:Mohini Date:04-03-2014*/
             report.isPortfolioOn = isPortfolioOn;
 
-            //For Hover Over Information :Ejaz Waquif DT:2/11/2014
+          /*  //For Hover Over Information :Ejaz Waquif DT:2/11/2014*/
             if (resource.isConfig.toLowerCase() == 'true') {
                 report.gConfigProject = resource.gPageSpecialTerms['Project'] == undefined ? 'Project' : resource.gPageSpecialTerms['Project'];
                 report.gConfigTestPass = resource.gPageSpecialTerms['Test Pass'] == undefined ? 'Test Pass' : resource.gPageSpecialTerms['Test Pass'];
@@ -161,9 +159,9 @@
             $("#executedTitle").attr('title', 'Number of ' + report.gConfigTestStep + 's tested/executed (with Pass or Fail ' + report.gConfigStatus.toLowerCase() + ') within the selected \'Date Filter\' criteria.');
             $("#activTesterTitle").attr('title', 'Number of ' + report.gConfigTester + 's who has performed Testing with the selected \'Date Filter\' criteria.');
 
-            //End of For Hover Over Information :Ejaz Waquif DT:2/11/2014
+            /*End of For Hover Over Information :Ejaz Waquif DT:2/11/2014*/
 
-            //Following changes is for resource file:Added by Mohini(Date:25-02-2014)
+            /*Following changes is for resource file:Added by Mohini(Date:25-02-2014)*/
             $('#cloumnTPName').append('<span>Click on link for more details</span>');
             $('#columnStatus').append('(%)<span>Click ' + report.gConfigStatus + ' block for more details</span>');
             $('#h2TPStatus').html(report.gConfigTestPass + '(es) Status');
@@ -178,15 +176,15 @@
             /********************************************/
             Main.showLoading();
 
-            //To get data collection from service
+            /*To get data collection from service*/
             report.getDataFromService();
 
-            //setTimeout('report.pageLoad();',200);
+            /*setTimeout('report.pageLoad();',200);*/
             $("#tabs").tabs();
         });
 
         function ShowDetailView() {
-            if ($("#dvDet").parent(".ui-state-active").length == 0)// Code modified to call the function only if Consolidated tab is In active |Ejaz Waquif DT:Dec/18/2014
+            if ($("#dvDet").parent(".ui-state-active").length == 0)/* Code modified to call the function only if Consolidated tab is In active |Ejaz Waquif DT:Dec/18/2014*/
             {
                 Main.showLoading(); setTimeout('report.detailedViewClick();', 200); Main.hideLoading();
             }

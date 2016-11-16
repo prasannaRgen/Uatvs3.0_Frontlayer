@@ -1,4 +1,4 @@
-﻿/* Copyright © 2012 RGen Solutions . All Rights Reserved.
+/* Copyright © 2012 RGen Solutions . All Rights Reserved.
    Contact : support@rgensolutions.com 
 */
 
@@ -1152,7 +1152,7 @@ var report2 = {
                                         var compDate = new Date(testCaseItems2[xi]['DateTimeForFailedStep'].replace("- ", ""));
                                     else
                                         //var compDate = new Date((testCaseItems2[xi]['Modified']).replace(/\-/g,'/'));
-                                        var compDate = new Date((testCaseItems2[xi]['Modified']));
+                                        var compDate = new Date((testCaseItems2[xi]['modified']).replace(/\-/g, '/'));
                                     if (compDate <= max && compDate >= min) //&& testCaseItems2[xi]['Modified']!=testCaseItems2[xi]['Created']
                                     {
                                         switch (testCaseItems2[xi]['status']) {
@@ -1819,8 +1819,11 @@ var report2 = {
                             if (status == "All")
                                 showFlag = 1;
                             else {
-                                var max = new Date((report2.maxDate).replace(/\-/g, '/'));
-                                var min = new Date((report2.minDate).replace(/\-/g, '/'));
+                               // var max = new Date((report2.maxDate).replace(/\-/g, '/'));
+                                //var min = new Date((report2.minDate).replace(/\-/g, '/'));
+
+                                var max = new Date((report2.maxDate));
+                                var min = new Date((report2.minDate));
 
                                 if (testCaseItems2[mm]['DateTimeForFailedStep'] != undefined)
                                     var compDate = new Date(testCaseItems2[mm]['DateTimeForFailedStep'].replace("- ", ""));

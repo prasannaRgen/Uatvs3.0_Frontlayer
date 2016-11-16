@@ -1,4 +1,4 @@
-﻿var tester = {
+var tester = {
     SiteURL: Main.getSiteUrl(),
     roleNameForRoleID: [],
     roleDescForRoleID: [],
@@ -2358,10 +2358,11 @@
 					{
 					    "Ok": function () {
 					        if (tester.noprjFlag == 1)
-					            window.location.href = Main.getSiteUrl() + '/SitePages/ProjectMgnt_1.aspx';
+					            window.location.pathname = 'Dashboard/ProjectMgnt'
+					          //  window.location.href = Main.getSiteUrl() + '/SitePages/ProjectMgnt_1.aspx';
 					        else if (tester.noTPFlag == 1)
-					            window.location.href = Main.getSiteUrl() + '/SitePages/TestPassMgnt_1.aspx' + '?pid=' + show.projectId + '&tpid=' + show.testPassId;
-
+					         //   window.location.href = Main.getSiteUrl() + '/SitePages/TestPassMgnt_1.aspx' + '?pid=' + show.projectId + '&tpid=' + show.testPassId;
+					            window.location.pathname = 'TestPass'
 					        $(this).dialog("close");
 					    },
 					    "Cancel": function () {

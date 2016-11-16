@@ -1,4 +1,4 @@
-﻿/* Copyright © 2012 RGen Solutions . All Rights Reserved.
+/* Copyright © 2012 RGen Solutions . All Rights Reserved.
    Contact : support@rgensolutions.com 
 */
 
@@ -592,7 +592,7 @@ var feedback = {
             }
         }
         else
-            window.location.href = Main.getSiteUrl() + "/SitePages/Dashboard.aspx";
+            window.location.href = Main.getSiteUrl() + "/Dashboard/Index";
 
 
 
@@ -3402,48 +3402,374 @@ var feedback = {
         });
 
     },
+    //exportTestCase: function () {
+    //    if ($("#projSelectTC").val() == -1) {
+    //        feedback.alertBox('Please select ' + feedback.rsProject + '.');
+    //        Main.hideLoading();
+    //    }
+    //    else if ($("#testPasSelectTC").text() == "No " + feedback.rstestPass) {
+    //        feedback.alertBox('No ' + feedback.rstestPass + ' available in ' + feedback.rsProject + '.');
+    //        Main.hideLoading();
+    //    }
+    //    else {
+    //        try {
+    //            if (feedback.isPortfolioOn) {
+    //                var selected = $("#versionSelectTC option:selected").val();
+    //            }
+    //            else {
+    //                var selected = $("#projSelectTC option:selected").val();
+    //            }
+
+    //            var prjName = $("#projSelectTC option:selected").attr('title');
+    //            var exportData = '';
+    //            var loginSpUserId = _spUserId;
+    //            if ((selected != '' || selected != undefined) && (loginSpUserId != '' || loginSpUserId != undefined)) {
+    //                exportData = "Parameters?projectName=" + prjName + "&projectId=" + selected + "&loginSpUserId=" + loginSpUserId;
+    //                if ($('#testPasSelectTC option:selected').val() != 0)
+    //                    exportData += "&testPassId=" + $('#testPasSelectTC option:selected').val();
+
+    //                if ($('#testerSelectTC option:selected').val() != 0)
+    //                    exportData += "&testerSpUserId=" + $('#testerSelectTC option:selected').val();
+
+    //                if ($('#roleSelectTC option:selected').val() != 0)
+    //                    exportData += "&roleId=" + $('#roleSelectTC option:selected').val();
+
+    //                exportData += "&portfolio=" + isPortfolioOn;
+    //            }
+    //            var result = ServiceLayer.GenerateReport("ExportFeedback", exportData);
+
+    //        }
+    //        catch (e) {
+    //            Main.hideLoading();
+    //        }
+    //    }
+    //    Main.hideLoading();
+    //},
+
+
     exportTestCase: function () {
         if ($("#projSelectTC").val() == -1) {
-            feedback.alertBox('Please select ' + feedback.rsProject + '.');
+            //feedback.alertBox("Please select project.");
+            feedback.alertBox('Please select ' + feedback.rsProject + '.');//added by Mohini for resource file
             Main.hideLoading();
         }
-        else if ($("#testPasSelectTC").text() == "No " + feedback.rstestPass) {
-            feedback.alertBox('No ' + feedback.rstestPass + ' available in ' + feedback.rsProject + '.');
+            //else if($("#testPasSelectTC").text() == "No Test Pass")
+        else if ($("#testPasSelectTC").text() == "No " + feedback.rstestPass)//added by Mohini for resource file
+        {
+            //feedback.alertBox("No Test Pass available in Project.");
+            feedback.alertBox('No ' + feedback.rstestPass + ' available in ' + feedback.rsProject + '.');//added by Mohini for resource file
             Main.hideLoading();
+        }
+        else if (typeof (window.ActiveXObject) == undefined) {
+            Main.showPrerequisites("Prerequisites for 'Excel-Import/Export' feature"); // shilpa 12 apr
         }
         else {
+            Main.showLoading();
+            var stat = 0;
             try {
-                if (feedback.isPortfolioOn) {
-                    var selected = $("#versionSelectTC option:selected").val();
+                var xlApp = new ActiveXObject("Excel.Application");
+                stat = 1;
+            }
+            catch (ex) {
+                Main.showPrerequisites("Prerequisites for 'Excel-Import/Export' feature"); // shilpa 12 apr
+            }
+            if (stat == 0) {
+                Main.hideLoading();
+                return;
+            }
+            try {
+                xlApp.DisplayAlerts = false;
+                var xlBook = xlApp.Workbooks.Add();
+                xlBook.worksheets("Sheet1").activate;
+                var XlSheet = xlBook.activeSheet;
+                //XlSheet.Name="Feedback Template";
+                XlSheet.Name = '"' + feedback.rsfeedback + ' Template"';//added by Mohini for resource file
+
+                //To assign cell number for portfolio on/off mode for version column:SD
+                if (isPortfolioOn) {
+                    var projectCellNo = 1; var versionCellNo = 2; var testPassCellNo = 3; var testCaseCellNo = 4; var testerCellNo = 4; var roleCellNo = 5; var ratingCellNo = 6; var feedbackCellNo = 7;
                 }
                 else {
-                    var selected = $("#projSelectTC option:selected").val();
+                    var projectCellNo = 1; var testPassCellNo = 2; var testCaseCellNo = 3; var testerCellNo = 3; var roleCellNo = 4; var ratingCellNo = 5; var feedbackCellNo = 6;
                 }
 
-                var prjName = $("#projSelectTC option:selected").attr('title');
-                var exportData = '';
-                var loginSpUserId = _spUserId;
-                if ((selected != '' || selected != undefined) && (loginSpUserId != '' || loginSpUserId != undefined)) {
-                    exportData = "Parameters?projectName=" + prjName + "&projectId=" + selected + "&loginSpUserId=" + loginSpUserId;
-                    if ($('#testPasSelectTC option:selected').val() != 0)
-                        exportData += "&testPassId=" + $('#testPasSelectTC option:selected').val();
-
-                    if ($('#testerSelectTC option:selected').val() != 0)
-                        exportData += "&testerSpUserId=" + $('#testerSelectTC option:selected').val();
-
-                    if ($('#roleSelectTC option:selected').val() != 0)
-                        exportData += "&roleId=" + $('#roleSelectTC option:selected').val();
-
-                    exportData += "&portfolio=" + isPortfolioOn;
+                //Set Excel Column Headers and formatting from array
+                //XlSheet.Range("A1:H1000").NumberFormat = "@";
+                feedback.flagForTestCase = 0;
+                if ($('#testPasSelectTC').val() == 0) {
+                    for (var ii = 1; ii < $('#testPasSelectTC option').length; ii++) {
+                        if (feedback.forTPIDGetFRConfg[$('#testPasSelectTC option').eq(ii).val()] == "1")
+                            feedback.flagForTestCase = 1;
+                    }
                 }
-                var result = ServiceLayer.GenerateReport("ExportFeedback", exportData);
+                else {
+                    if (feedback.forTPIDGetFRConfg[$('#testPasSelectTC').val()] == "1")
+                        feedback.flagForTestCase = 1;
+                }
+                //XlSheet.cells(1,1).value= "Project";
+                XlSheet.cells(1, projectCellNo).value = feedback.rsProject;//added by Mohini for resource file
+                XlSheet.cells(1, projectCellNo).font.colorindex = "2";
+                XlSheet.cells(1, projectCellNo).font.bold = "false";
+                XlSheet.cells(1, projectCellNo).interior.colorindex = "23";
 
+                //XlSheet.cells(1,2).value="Version";
+                if (isPortfolioOn)//:SD
+                {
+                    XlSheet.cells(1, versionCellNo).value = feedback.rsVersion;//added by Mohini for resource file
+                    XlSheet.cells(1, versionCellNo).font.colorindex = "2";
+                    XlSheet.cells(1, versionCellNo).font.bold = "false";
+                    XlSheet.cells(1, versionCellNo).interior.colorindex = "23";
+                }
+
+                //XlSheet.cells(1,2).value= "Test Pass";
+                XlSheet.cells(1, testPassCellNo).value = feedback.rstestPass;//added by Mohini for resource file
+                XlSheet.cells(1, testPassCellNo).font.colorindex = "2";
+                XlSheet.cells(1, testPassCellNo).font.bold = "false";
+                XlSheet.cells(1, testPassCellNo).interior.colorindex = "23";
+
+                var i = 0;
+                if (feedback.flagForTestCase == 1) {
+                    i = 1;
+                    //XlSheet.cells(1,3).value= "Test Case";
+                    XlSheet.cells(1, testCaseCellNo).value = feedback.rsTestCase;//added by Mohini for resource file
+                    XlSheet.cells(1, testCaseCellNo).font.colorindex = "2";
+                    XlSheet.cells(1, testCaseCellNo).font.bold = "false";
+                    XlSheet.cells(1, testCaseCellNo).interior.colorindex = "23";
+                }
+                //XlSheet.cells(1,i+3).value= "Tester";			   	
+                XlSheet.cells(1, i + testerCellNo).value = feedback.rsTester;//added by Mohini for resource file
+                XlSheet.cells(1, i + testerCellNo).font.colorindex = "2";
+                XlSheet.cells(1, i + testerCellNo).font.bold = "false";
+                XlSheet.cells(1, i + testerCellNo).interior.colorindex = "23";
+
+                //XlSheet.cells(1,i+4).value= "Role";
+                XlSheet.cells(1, i + roleCellNo).value = feedback.rsRole;//added by Mohini for resource file
+                XlSheet.cells(1, i + roleCellNo).font.colorindex = "2";
+                XlSheet.cells(1, i + roleCellNo).font.bold = "false";
+                XlSheet.cells(1, i + roleCellNo).interior.colorindex = "23";
+
+                //XlSheet.cells(1,i+5).value= "Rating";
+                XlSheet.cells(1, i + ratingCellNo).value = feedback.rsRating;//added by Mohini for resource file
+
+                XlSheet.cells(1, i + ratingCellNo).font.colorindex = "2";
+                XlSheet.cells(1, i + ratingCellNo).font.bold = "false";
+                XlSheet.cells(1, i + ratingCellNo).interior.colorindex = "23";
+
+                //XlSheet.cells(1,i+6).value= "Feedback";
+                XlSheet.cells(1, i + feedbackCellNo).value = feedback.rsfeedback;//added by Mohini for resource file
+                XlSheet.cells(1, i + feedbackCellNo).font.colorindex = "2";
+                XlSheet.cells(1, i + feedbackCellNo).font.bold = "false";
+                XlSheet.cells(1, i + feedbackCellNo).interior.colorindex = "23";
+                XlSheet.Range("A1").EntireColumn.AutoFit();
+                XlSheet.Range("B1").EntireColumn.AutoFit();
+                XlSheet.Range("C1").EntireColumn.AutoFit();
+                XlSheet.Range("D1").EntireColumn.AutoFit();
+                XlSheet.Range("E1").EntireColumn.AutoFit();
+                XlSheet.Range("F1").EntireColumn.AutoFit();
+                if (isPortfolioOn)//:SD
+                {
+                    if (feedback.flagForTestCase == 1) {
+                        XlSheet.Range("A1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("B1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("C1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("D1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("E1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("F1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("G1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("H1").EntireColumn.columnwidth = '80';
+                        XlSheet.Range("F1").EntireColumn.WrapText = 'True';
+                        XlSheet.Range("G1").EntireColumn.WrapText = 'True';
+                        XlSheet.Range("H1").EntireColumn.WrapText = 'True';
+                    }
+                    else {
+                        XlSheet.Range("A1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("B1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("C1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("D1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("E1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("F1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("G1").EntireColumn.columnwidth = '80';
+
+                    }
+                }
+                else {
+                    if (feedback.flagForTestCase == 1) {
+                        XlSheet.Range("A1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("B1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("C1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("D1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("E1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("F1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("G1").EntireColumn.columnwidth = '80';
+                        XlSheet.Range("E1").EntireColumn.WrapText = 'True';
+                        XlSheet.Range("F1").EntireColumn.WrapText = 'True';
+                        XlSheet.Range("G1").EntireColumn.WrapText = 'True';
+                    }
+                    else {
+                        XlSheet.Range("A1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("B1").EntireColumn.columnwidth = '25';
+                        XlSheet.Range("C1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("D1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("E1").EntireColumn.columnwidth = '20';
+                        XlSheet.Range("F1").EntireColumn.columnwidth = '80';
+                    }
+
+                }
+                XlSheet.Range("A1").EntireColumn.WrapText = 'True';
+                XlSheet.Range("B1").EntireColumn.WrapText = 'True';
+                XlSheet.Range("C1").EntireColumn.WrapText = 'True';
+                XlSheet.Range("D1").EntireColumn.WrapText = 'True';
+                XlSheet.Range("E1").EntireColumn.WrapText = 'True';
+                //XlSheet.Range("F1").EntireColumn.WrapText='True';
+
+                var TestPassID = '';
+                var feedAvail = 0;
+                var cellCount = 1;
+                var lastCount = 1;
+                var flagTrue = 0;
+                for (var i = 1; i < $('#testPasSelectTC option').length; i++) {
+                    if ($('#testPasSelectTC').val() == 0)
+                        TestPassID = $('#testPasSelectTC option').eq(i).val();
+                    else
+                        TestPassID = $('#testPasSelectTC').val();
+
+                    if ($("#testerSelectTC").val() == 0 && $("#roleSelectTC").val() == 0)
+                        var query = '<Query><Where><Eq><FieldRef Name="TestPassID" /><Value Type="Text">' + TestPassID + '</Value></Eq></Where></Query>';
+                    else if ($("#testerSelectTC").val() != 0 && $("#roleSelectTC").val() == 0)
+                        var query = '<Query><Where><And><Eq><FieldRef Name="TestPassID" /><Value Type="Text">' + TestPassID + '</Value></Eq><Eq><FieldRef Name="SPUserID" /><Value Type="Text">' + $("#testerSelectTC").val() + '</Value></Eq></And></Where></Query>';
+                    else if ($("#testerSelectTC").val() == 0 && $("#roleSelectTC").val() != 0)
+                        var query = '<Query><Where><And><Eq><FieldRef Name="TestPassID" /><Value Type="Text">' + TestPassID + '</Value></Eq><Eq><FieldRef Name="Role" /><Value Type="Text">' + $("#roleSelectTC").val() + '</Value></Eq></And></Where></Query>';
+                    else if ($("#testerSelectTC").val() != 0 && $("#roleSelectTC").val() != 0)
+                        var query = '<Query><Where><And><Eq><FieldRef Name="TestPassID" /><Value Type="Text">' + TestPassID + '</Value></Eq><And><Eq><FieldRef Name="SPUserID" /><Value Type="Text">' + $("#testerSelectTC").val() + '</Value></Eq><Eq><FieldRef Name="Role" /><Value Type="Text">' + $("#roleSelectTC").val() + '</Value></Eq></And></And></Where></Query>';
+                    else if ($("#testerSelectTC").val() != 0 && $("#roleSelectTC").val() != 0)
+                        var query = '<Query><Where><And><Eq><FieldRef Name="TestPassID" /><Value Type="Text">' + TestPassID + '</Value></Eq><And><Eq><FieldRef Name="SPUserID" /><Value Type="Text">' + $("#testerSelectTC").val() + '</Value></Eq><Eq><FieldRef Name="Role" /><Value Type="Text">' + $("#roleSelectTC").val() + '</Value></Eq></And></And></Where></Query>';
+                    var FeedbackRatingItems = feedback.dmlOperation(query, 'FeedbackRating');
+                    if (FeedbackRatingItems != null && FeedbackRatingItems != undefined) {
+                        var gridv = '';
+                        for (var ii = 0; ii < FeedbackRatingItems.length; ii++) {
+                            flagTrue = 0;
+                            lastCount = cellCount;
+
+                            XlSheet.cells((cellCount + 1), projectCellNo).value = $("#projSelectTC option:selected").attr('title');
+                            if (isPortfolioOn)//:SD
+                                XlSheet.cells((cellCount + 1), versionCellNo).value = "'" + $("#versionSelectTC option:selected").text().toString();
+                            XlSheet.cells((cellCount + 1), testPassCellNo).value = feedback.TestPassNameForTPIDTCView[FeedbackRatingItems[ii]['TestPassID']];
+                            var cc = 0;
+                            if (feedback.flagForTestCase == 1) {
+                                cc = 1;
+                                if (FeedbackRatingItems[ii]['TestCaseName'] != undefined)
+                                    XlSheet.cells((cellCount + 1), testCaseCellNo).value = FeedbackRatingItems[ii]['TestCaseName'];
+                                else
+                                    XlSheet.cells((cellCount + 1), testCaseCellNo).value = "N/A";
+                            }
+                            //XlSheet.cells((cellCount+1),testerCellNo+cc).value = feedback.aliasForSPUserIDTCView[ FeedbackRatingItems[ii]['SPUserID'] ]; 
+                            XlSheet.cells((cellCount + 1), testerCellNo + cc).value = feedback.TesteFullNameForSPUserIDTCView[FeedbackRatingItems[ii]['SPUserID']];
+                            XlSheet.cells((cellCount + 1), roleCellNo + cc).value = feedback.roleNameForRoleID[FeedbackRatingItems[ii]['Role']];
+                            XlSheet.cells((cellCount + 1), ratingCellNo + cc).value = FeedbackRatingItems[ii]['Rating'];
+
+                            var feed = FeedbackRatingItems[ii]['Feedback'];
+                            if (feed != undefined) {
+                                feed = feed.replace(/&quot;/g, '"');
+                                /*For Bug Id:11779 Mohini DT:15-05-2014*/
+                                feed = feed.replace(/&gt;/g, '>');
+                                feed = feed.replace(/&lt;/g, '<');
+                                feed = feed.replace(/&amp;/g, '&');
+                            }
+                            /****************************************/
+                            if (feed != undefined) {
+                                if (feed.match(/</g) == undefined && feed.match(/</g) == null)
+                                    XlSheet.cells((cellCount + 1), feedbackCellNo + cc).value = feed;
+                                else if (feed.match(/</g).length == 2 && (feed.indexOf("<div") != -1 || feed.indexOf("<p") != -1))
+                                    XlSheet.cells((cellCount + 1), feedbackCellNo + cc).value = feedback.filterData(feed);
+                                else if (feed.indexOf("</table>") != -1 && feed.indexOf("<table") != -1) {
+                                    if (feed.match(/<tr/g).length > 1 && feed.match(/<td/g).length > 1) {
+                                        var completeActionName = feedback.filterData(feed);
+                                        completeActionName = completeActionName.replace(/&quot;/g, '"');
+                                        completeActionName = completeActionName.replace(/(\r\n)+/g, '');
+                                        XlSheet.cells((cellCount + 1), feedbackCellNo + cc).value = completeActionName;
+                                    }
+                                    else
+                                        flagTrue = 1;
+                                }
+                                else
+                                    flagTrue = 1;
+                                if (flagTrue == 1) {
+                                    enableDesignMode("rte3", feed, false);
+                                    rteCommand("rte3", "selectAll");
+                                    rteCommand("rte3", "copy");
+                                    XlSheet.cells((cellCount + 1), feedbackCellNo + cc).PasteSpecial();
+                                }
+                                XlSheet.cells((cellCount + 1), feedbackCellNo + cc).WrapText = 'True';
+
+                                cellCount = XlSheet.UsedRange.Rows.Count;
+                                if (lastCount < cellCount - 1) {
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 1), XlSheet.cells(cellCount, 1)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 2), XlSheet.cells(cellCount, 2)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 3), XlSheet.cells(cellCount, 3)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 4), XlSheet.cells(cellCount, 4)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 5), XlSheet.cells(cellCount, 5)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 6), XlSheet.cells(cellCount, 6)).Merge();
+                                    XlSheet.Range(XlSheet.cells((lastCount + 1), 7), XlSheet.cells(cellCount, 7)).Merge();
+
+                                    for (var mm = lastCount + 2; mm <= cellCount; mm++)
+                                        XlSheet.cells(mm, feedbackCellNo + cc).WrapText = 'True';
+
+                                }
+                            }
+                            else {
+                                XlSheet.cells((cellCount + 1), feedbackCellNo + cc).value = "N/A";
+                                cellCount++;
+                            }
+
+                        }
+                        feedAvail = 1;
+                    }
+                    if ($('#testPasSelectTC').val() != 0)
+                        break;
+                }
+                if (feedAvail == 0) {
+                    XlSheet.cells(2, 1).value = $("#projSelectTC option:selected").attr('title');
+                    XlSheet.cells(2, 2).interior.colorindex = "27";
+                    //XlSheet.cells(2,2).value = "No Rating available.";
+                    //feedback.alertBox("No Rating available.");
+                    /***Added by Mohini for resource file****/
+                    XlSheet.cells(2, 2).value = '"No ' + feedback.rsRating + ' available."';
+                    feedback.alertBox('"No ' + feedback.rsRating + ' available."');
+
+                }
+                else {
+                    XlSheet.Range("A2:A" + cellCount).VerticalAlignment = -4108;
+                    XlSheet.Range("A2:A" + cellCount).HorizontalAlignment = -4108;
+
+                    XlSheet.Range("B2:B" + cellCount).VerticalAlignment = -4108;
+                    XlSheet.Range("B2:B" + cellCount).HorizontalAlignment = -4108;
+
+                    XlSheet.Range("C2:C" + cellCount).VerticalAlignment = -4108;
+                    XlSheet.Range("C2:C" + cellCount).HorizontalAlignment = -4108;
+
+                    XlSheet.Range("D2:D" + cellCount).VerticalAlignment = -4108;
+                    XlSheet.Range("D2:D" + cellCount).HorizontalAlignment = -4108;
+
+                    XlSheet.Range("E2:E" + cellCount).VerticalAlignment = -4108;
+                    XlSheet.Range("E2:E" + cellCount).HorizontalAlignment = -4108;
+
+                    if (isPortfolioOn) {
+                        XlSheet.Range("F2:F" + cellCount).VerticalAlignment = -4108;
+                        XlSheet.Range("F2:F" + cellCount).HorizontalAlignment = -4108;
+                    }
+                }
+                xlApp.DisplayAlerts = true;
+                xlApp.Visible = true;
+                CollectGarbage();
             }
-            catch (e) {
-                Main.hideLoading();
+            catch (err) {
+                feedback.alertBox(err.message);
+                window.setTimeout("Main.hideLoading()", 200);
             }
+
         }
         Main.hideLoading();
+
     },
 
     /* Function to show jquery alert box */

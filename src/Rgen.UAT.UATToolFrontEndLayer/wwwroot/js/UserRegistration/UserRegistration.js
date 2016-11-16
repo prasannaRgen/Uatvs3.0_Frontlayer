@@ -1,4 +1,4 @@
-﻿"use strict"
+"use strict"
 var UserRegistration =
     {
 
@@ -10,7 +10,8 @@ var UserRegistration =
                 var Password = $('#' + _container[3] + '');
                 var ConfirmPassword = $('#' + _container[4] + '');
                 var DOB = $('#' + _container[5] + '');
-                var Gender = $('#' + _container[6] + '');
+                //var Gender = $('#' + _container[6] + ' input[type=radio]:checked');     
+                var Gender = $('input[name=opGender]:checked', '#Gender').val()
                 var MobileNo = $('#' + _container[7] + '');
                 var Country = $('#' + _container[8] + ' option:selected');
           
@@ -24,12 +25,13 @@ var UserRegistration =
                     'Password': Password.val(),
                     'ConfirmPassword': ConfirmPassword.val(),
                     'DOB': DOB.val(),
-                    'Gender': Gender.val(),
+                    'Gender': Gender,
                     'MobileNo': MobileNo.val(),
                     'Country': Country.text()
                
                 };
 
+                
               
                 var result = ServiceLayer.InsertUserData("InsertRegisterUser", data, "UserRegistration");
                 if (result != '') {    

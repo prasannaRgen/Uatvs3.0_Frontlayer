@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/UatAdminMaster.cshtml";
 }
 
@@ -141,14 +141,14 @@
         <!-- input form starts -->
         <div id="testCaseContents" style="width:900px;display:none;" class="DivlblWithColon">
             <div style="float:left;width:310px;">
-                <label id="lblTestCaseName" class="mandatory">Test Case Name:</label>
+                <label id="lblTestCaseName" class="mandatory">Test Case Name:<font color="red"><b>*</b></font></label>
                 <input type="text" class="inputNew" id="txttestcname" />
                 <label id="lblDescription">Description:</label>
                 <textarea id="desc" class="desc textAreaFont" title="Inputing HTML elements will be discarded"></textarea>
             </div>
             <div style="float:right;">
                 <div>
-                    <label id="lblETT">Estimated Test Time (Minutes): </label>
+                    <label id="lblETT">Estimated Test Time (Minutes):</label>
                 </div>
                 <input type="text" class="inputNew" id="estTime" />
                 <div style="width:395px;padding-top:7px;">

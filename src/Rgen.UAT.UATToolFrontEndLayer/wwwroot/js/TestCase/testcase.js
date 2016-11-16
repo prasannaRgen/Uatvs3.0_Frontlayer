@@ -1,4 +1,4 @@
-﻿/* Copyright © 2012 RGen Solutions . All Rights Reserved.
+/* Copyright © 2012 RGen Solutions . All Rights Reserved.
    Contact : support@rgensolutions.com 
 */
  
@@ -58,12 +58,15 @@ alertBox:function(msg){
 alertBoxForNavigation:function(msg,navigationPage){
 			$("#divAlert").html(msg);
 			$('#divAlert').dialog({height: 150,modal: true, buttons: { "Ok":function() { 
-																			if(navigationPage=='testpass')
-																				window.location.href= 'TestPassMgnt_1.aspx?pid='+show.projectId;
-																			else if(navigationPage=='tester')
-																				window.location.href= 'Tester_1.aspx?pid='+show.projectId+"&tpid="+show.testPassId
-																		    else if(navigationPage=='project')
-																		        window.location.href= 'ProjectMgnt_1.aspx';
+			                                                                if (navigationPage == 'testpass')
+			                                                                    window.location.pathname = 'TestPass';
+																				//window.location.href= 'TestPassMgnt_1.aspx?pid='+show.projectId;
+			                                                                else if(navigationPage=='tester')
+			                                                                    window.location.pathname = 'Tester';
+																				//window.location.href= 'Tester_1.aspx?pid='+show.projectId+"&tpid="+show.testPassId
+			                                                                else if (navigationPage == 'project')
+			                                                                    window.location.pathname = 'Dashboard/ProjectMgnt';
+																		        //window.location.href= 'ProjectMgnt_1.aspx';
 																			$(this).dialog("close");
 																		},
 																		"Cancel":function(){ 
@@ -613,7 +616,7 @@ saveTestCase:function ()
 			    //if (result[0].Value == "Done")
 			        if (result.Success == "Done")
 			        {
-			            data.testCaseId = result.Value;
+			            data.testCaseId = result['ID'];
 					//data.testCaseId = result[1].Value;
 					testcase.TestCaseList.push(data);
 					Main.AutoHideAlertBox(testcase.gConfigTestCase+" added successfully");		
@@ -2099,7 +2102,8 @@ showTestCase:function(){
 			cloneMarkup += '<tr><td class="center"><span>'+testcase.TestCaseList[j].testCaseId+'</span></td>';
 			cloneMarkup += '<td style="padding-right:5px;"><span>'+testCaseName+'</span></td>';
 			cloneMarkup += '<td ><span title="'+testPassNames+'">'+trimText(testPassNames,35)+'</span></td>';
-            var testcaseIdAssociatedtestPassIds = testcase.TestCaseList[j]['ID']+testp;			
+		    //var testcaseIdAssociatedtestPassIds = testcase.TestCaseList[j]['ID']+testp;			
+		    var testcaseIdAssociatedtestPassIds = testp;	
 			cloneMarkup += '<td class="center"><span><a title="Copy '+testcase.gConfigTestCase+'"'+' class="clsClone" testCaseId="'+testcase.TestCaseList[j].testCaseId+'" testCaseName="'+testCaseName+'" style="cursor: pointer;" ><img width="25px" height="25px" src="/images/Admin/Clone.png"></a></td></tr>';
 			//:SD
 			if(testcase.flagForClone)

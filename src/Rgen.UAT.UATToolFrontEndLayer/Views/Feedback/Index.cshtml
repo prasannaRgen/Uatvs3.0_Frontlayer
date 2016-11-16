@@ -1,4 +1,4 @@
-﻿
+
 @{
     Layout = "~/Views/Shared/UatMaster.cshtml";
 }
@@ -60,22 +60,22 @@
 
 
             feedback.isPortfolioOn = isPortfolioOn;
-            //For tab1
+            /*For tab1*/
             $("#tab1FilterWithoutPortfolio").remove();
             $("#tab1FilterWithoutPortfolio").show();
 
-            //For tab2
+            /*For tab2*/
             $("#tab2FilterWithoutPortfolio").remove();
             $("#tab2FilterWithoutPortfolio").show();
 
 
-            //var beforeload = (new Date()).getTime();
-            feedback.init();// by Mohini for resource file
+            /*var beforeload = (new Date()).getTime();*/
+            feedback.init();/* by Mohini for resource file*/
             feedback.showGrid();
             $("#tabs").tabs();
             $("#popUpRTE").css('position', 'static');
 
-            //pageloadingtime(beforeload);
+            /*pageloadingtime(beforeload);*/
             if (!isPortfolioOn)//:SD
             {
                 $('#versionSelectTC').hide();
@@ -84,7 +84,7 @@
                 $('#versionSelect').hide();
             }
 
-            //Added by Mohini for testStep feedback popup DT:28-05-2014
+            /*Added by Mohini for testStep feedback popup DT:28-05-2014*/
             var url = window.location.href;
             var val = url.toLowerCase().indexOf('tsfd=1');
             var keyVal = new Array();
@@ -326,7 +326,7 @@
         var parameter1 = Main.getSiteUrl() + "/images/";
         var parameter2 = Main.getSiteUrl() + "/palletes/";
         initRTE(parameter1.toString(), parameter2.toString(), "", true);
-        //initRTE("../SiteAssets/js/RTE/images/", "../SiteAssets/js/RTE/",  "", true);
+        /*initRTE("../SiteAssets/js/RTE/images/", "../SiteAssets/js/RTE/",  "", true);*/
         writeRichText('rte3', "", 610, 200, false, false);
     </script>
 </div>

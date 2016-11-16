@@ -1,4 +1,4 @@
-﻿/* Copyright © 2012 RGen Solutions . All Rights Reserved.
+/* Copyright © 2012 RGen Solutions . All Rights Reserved.
    Contact : support@rgensolutions.com 
 */
 
@@ -2761,7 +2761,7 @@ var report = {
 
     //To get the data from WCF layer |Ejaz Waquif DT:11/18/2014 
     getDataFromService: function () {
-        _spUserId = '19'
+        //_spUserId = '19'
         //call the service layer to get data		
         report.dataCollection = ServiceLayer.GetData('GetStakeholderProjectDetails', null, 'StakeholderDashboard');
 
@@ -2771,12 +2771,8 @@ var report = {
         //Get the TestStep data		
         report.testStepCollection = ServiceLayer.GetData('GetStakeholderTestStep', null, 'StakeholderDashboard');
 
-
-
         report.FillTestStepArray();
-
     },
-
 
 
     //To convert the status count in percentage for Project |Ejaz Waquif DT:11/18/2014 
@@ -2805,108 +2801,6 @@ var report = {
         var arrLength = report.testStepCollection.length;
 
         var data = report.testStepCollection;
-
-
-        ////modified New 
-        //var EterationArray = new Array();
-        //EterationArray = report.testStepCollection;
-        //var projectId, testPassId, testCaseId, testerId, roleId;
-        //if (EterationArray != undefined && EterationArray.length > 0) {
-        //    var len = EterationArray.length;
-        //    for (var i = 0; i < len; i++) {
-
-        //        if (EterationArray[i].hasOwnProperty("projectId")) { projectId = EterationArray[i].projectId }
-        //        if (EterationArray[i].hasOwnProperty("testPassId")) { testPassId = EterationArray[i].testPassId }
-        //        if (EterationArray[i].hasOwnProperty("testCaseId")) { testCaseId = EterationArray[i].testCaseId }
-        //        if (EterationArray[i].hasOwnProperty("testerId")) { testerId = EterationArray[i].testerId }
-        //        if (EterationArray[i].hasOwnProperty("roleId")) { roleId = EterationArray[i].roleId }
-
-        //        if (EterationArray[i].projectId == projectId && EterationArray[i].testPassId == testPassId && EterationArray[i].testCaseId == testCaseId && EterationArray[i].testerId == testerId && EterationArray[i].roleId == roleId) {
-        //            EterationArray[i].lstStkDbUnique = [];
-        //            var StkDBUniqueObject = {};
-
-        //            StkDBUniqueObject['testerId'] = (!EterationArray[i].hasOwnProperty("testerId")) ? "" : EterationArray[i].testerId == null ? "" : EterationArray[i].testerId,
-        //            StkDBUniqueObject['projectId'] = (!EterationArray[i].hasOwnProperty("projectId")) ? "" : EterationArray[i].projectId == null ? "" : EterationArray[i].projectId,
-        //            StkDBUniqueObject['testPassId'] = (!EterationArray[i].hasOwnProperty("testPassId")) ? "" : EterationArray[i].testPassId == null ? "" : EterationArray[i].testPassId,
-        //            StkDBUniqueObject['testCaseId'] = (!EterationArray[i].hasOwnProperty("testCaseId")) ? "" : EterationArray[i].testCaseId == null ? "" : EterationArray[i].testCaseId,
-        //            StkDBUniqueObject['roleId'] = (!EterationArray[i].hasOwnProperty("roleId")) ? "" : EterationArray[i].roleId == null ? "" : EterationArray[i].roleId,
-
-        //            EterationArray[i].lstStkDbUnique.push(StkDBUniqueObject);
-
-
-        //            var StakeholderDbTestStep = {};
-        //            StakeholderDbTestStep = new StakeholderDbTestStep();
-
-        //            StakeholderDbTestStep.projectId = (!EterationArray[i].hasOwnProperty("projectId")) ? "" : EterationArray[i].projectId,
-        //            StakeholderDbTestStep.projectName = (!EterationArray[i].hasOwnProperty("projectName")) ? "" : EterationArray[i].projectName,
-        //            StakeholderDbTestStep.testPassId = (!EterationArray[i].hasOwnProperty("testPassId")) ? "" : EterationArray[i].testPassId == null ? "" : EterationArray[i].testPassId,
-        //            StakeholderDbTestStep.testPassName = (!EterationArray[i].hasOwnProperty("testPassName")) ? "" : EterationArray[i].testPassName,
-        //            StakeholderDbTestStep.testCaseId = (!EterationArray[i].hasOwnProperty("testCaseId")) ? "" : EterationArray[i].testCaseId,
-        //            StakeholderDbTestStep.testCaseName = (!EterationArray[i].hasOwnProperty("testCaseName")) ? "" : EterationArray[i].testCaseName,
-        //            StakeholderDbTestStep.testerId = (!EterationArray[i].hasOwnProperty("testerId")) ? "" : EterationArray[i].testerId,
-        //            StakeholderDbTestStep.testerName = (!EterationArray[i].hasOwnProperty("testerName")) ? "" : EterationArray[i].testerName,
-        //            StakeholderDbTestStep.roleId = (!EterationArray[i].hasOwnProperty("roleId")) ? "" : EterationArray[i].roleId
-        //            StakeholderDbTestStep.roleName = (!EterationArray[i].hasOwnProperty("roleName")) ? "" : EterationArray[i].roleName
-
-
-        //            EterationArray[i].lstDetails = [];
-        //            EterationArray[i].lstStakeholderDbTSDetails = [];
-        //            var StakeholderDbTSDetails = {};
-
-        //            StakeholderDbTSDetails['testStepId'] = (!EterationArray[i].hasOwnProperty("testStepId")) ? "" : EterationArray[i].testStepId,
-        //            StakeholderDbTSDetails['testStepName'] = (!EterationArray[i].hasOwnProperty("testStepName")) ? "" : EterationArray[i].testStepName,
-        //            StakeholderDbTSDetails['modified'] = (!EterationArray[i].hasOwnProperty("modified")) ? "" : EterationArray[i].modified == null ? "" : EterationArray[i].modified,
-        //            StakeholderDbTSDetails['created'] = (!EterationArray[i].hasOwnProperty("created")) ? "" : EterationArray[i].created,
-        //            StakeholderDbTSDetails['expectedResult'] = (!EterationArray[i].hasOwnProperty("expectedResult")) ? "" : EterationArray[i].expectedResult,
-        //            StakeholderDbTSDetails['actualResult'] = (!EterationArray[i].hasOwnProperty("actualResult")) ? "" : EterationArray[i].actualResult,
-        //            StakeholderDbTSDetails['status'] = (!EterationArray[i].hasOwnProperty("status")) ? "" : EterationArray[i].status
-
-        //            EterationArray[i].lstDetails.push(StakeholderDbTSDetails);
-
-        //            StakeholderDbTestStep.lstStakeholderDbTSDetails = EterationArray[i].lstDetails;
-        //            EterationArray[i].lstStakeholderDbTSDetails.push(StakeholderDbTSDetails);//EterationArray[i].lstDetails);
-        //            stakeholderDbTestStepResult.Add(StakeholderDbTestStep);
-
-        //        }
-
-        //        else {
-        //            EterationArray[i].lstDetails = [];
-        //            var StakeholderDbTSDetails = {};
-
-        //            StakeholderDbTSDetails['testStepId'] = (!EterationArray[i].hasOwnProperty("testStepId")) ? "" : EterationArray[i].testStepId,
-        //            StakeholderDbTSDetails['testStepName'] = (!EterationArray[i].hasOwnProperty("testStepName")) ? "" : EterationArray[i].testStepName,
-        //            StakeholderDbTSDetails['modified'] = (!EterationArray[i].hasOwnProperty("modified")) ? "" : EterationArray[i].modified == null ? "" : EterationArray[i].modified,
-        //            StakeholderDbTSDetails['created'] = (!EterationArray[i].hasOwnProperty("created")) ? "" : EterationArray[i].created,
-        //            StakeholderDbTSDetails['expectedResult'] = (!EterationArray[i].hasOwnProperty("expectedResult")) ? "" : EterationArray[i].expectedResult,
-        //            StakeholderDbTSDetails['actualResult'] = (!EterationArray[i].hasOwnProperty("actualResult")) ? "" : EterationArray[i].actualResult,
-        //            StakeholderDbTSDetails['status'] = (!EterationArray[i].hasOwnProperty("status")) ? "" : EterationArray[i].status
-
-        //            EterationArray[i].lstDetails.push(StakeholderDbTSDetails);
-
-        //            StakeholderDbTestStep.lstStakeholderDbTSDetails = lstDetails;
-        //            EterationArray[i].lstStakeholderDbTSDetails.push(StakeholderDbTSDetails);//EterationArray[i].lstDetails);
-        //            stakeholderDbTestStepResult.Add(StakeholderDbTestStep);
-
-        //        }
-
-        //       }
-        //    }
-
-
-        //var AnalysisArray = [];
-
-        //var length = EterationArray.length;
-        //for (var i = 0; i < length ; i++) {
-        //    if (EterationArray[i].hasOwnProperty("lstStakeholderDbTSDetails")) {
-        //        AnalysisArray.push(EterationArray[i]);
-        //    }
-
-        //}
-        //report.testStepCollection = [];
-        //report.testStepCollection = AnalysisArray;
-        ////[!] END
-
-
 
 
         for (var i = 0; i < arrLength ; i++) {
