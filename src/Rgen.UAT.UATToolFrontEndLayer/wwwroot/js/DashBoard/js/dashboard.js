@@ -721,7 +721,7 @@ var DashBoard = {
 
                 if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                     if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                        $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                        $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                 }
 
                 var userAsso = new Array();
@@ -827,7 +827,7 @@ var DashBoard = {
 
                     if (onLoadpdata.length != 0 && onLoadpdata != undefined && onLoadpdata != null && isNaN(onLoadpdata[0]) != true) {
                         if (onLoadpdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                     }
 
                     var userAsso = new Array();
@@ -1073,7 +1073,7 @@ var DashBoard = {
 
                     if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                         if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                     }
 
                     var userAsso = new Array();
@@ -1177,7 +1177,7 @@ var DashBoard = {
 
                 if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                     if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                        $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                        $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                 }
 
                 var userAsso = new Array();
@@ -1347,7 +1347,7 @@ var DashBoard = {
 
                         if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                             if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                                $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                                $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                         }
 
                         var userAsso = new Array();
@@ -1449,7 +1449,7 @@ var DashBoard = {
 
                     if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                         if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                            $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                     }
 
                     var userAsso = new Array();
@@ -1768,7 +1768,7 @@ var DashBoard = {
                         $('#divDetailAnalysisLink').html('<b><a title="' + DashBoard.gDetailAnalysisTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right" href="Dashboard/analysis?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">Detailed ' + DashBoard.gConfigAnalysis + '</a></b>');//Added by Mohini for Resource file
                         if (pdata.length != 0 && pdata != undefined && pdata != null && isNaN(pdata[0]) != true) {
                             if (pdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                                $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                                $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
                         }
                         var userAsso = new Array();
                         if (security.userAssociationForProject[$("#dd").val()] != undefined)
@@ -1879,7 +1879,7 @@ var DashBoard = {
             $('#divDetailAnalysisLink').html('<b><a title="' + DashBoard.gDetailAnalysisTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right" href="Dashboard/analysis?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">Detailed ' + DashBoard.gConfigAnalysis + '</a></b>');//Added by Mohini for Resource file
             if (npdata.length != 0 && npdata != undefined && npdata != null && isNaN(npdata[0]) != true) {
                 if (npdata[2] != "0" && DashBoard.showTriageForTPID[$('#testPassDD option:selected').val()] == "Yes")
-                    $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage.aspx?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
+                    $('#divDetailAnalysisLink').append('<b><a title="' + DashBoard.gTriageTitle + '" class="btnTestingStatus tTipdetailed" style="color:#0033CC;cursor: pointer;font-size:14px;float:right;" href="Triage?pid=' + pid + '&tpid=' + $('#testPassDD').val() + '">' + DashBoard.gConfigTriage + '</a></b> ');//Added by Mohini for Resource file	
             }
 
             var userAsso = new Array();
