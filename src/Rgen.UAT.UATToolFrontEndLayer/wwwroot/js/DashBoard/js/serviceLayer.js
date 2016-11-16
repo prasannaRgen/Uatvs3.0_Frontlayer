@@ -8,6 +8,7 @@
 $.ajaxSetup({
     // Disable caching of AJAX responses
     cache: false
+
 });
 var r = window.location.href.split('/');
 var FrontEndUrl = r[0] + "//" + r[2];
