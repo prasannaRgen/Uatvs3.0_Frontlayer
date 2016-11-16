@@ -9,8 +9,8 @@ function transformArr(orig) {
         for (i = 0, j = orig.length; i < j; i++) {
             cur = orig[i];
             if (cur.Security_Id == "1" && cur.Project_Id == null) {
-                var listSecurityID = { 'listSecurityID': cur.Security_Id };
-                newArr.push(cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString(), listSecurityID);
+                var listSecurityID = {'Project_Id': cur.Project_Id == "" || cur.Project_Id == null ? "" : cur.Project_Id.toString(),'listSecurityID': cur.Security_Id };
+                newArr = listSecurityID;
             }
             else {
                 if (!(cur.Project_Id in types)) {
